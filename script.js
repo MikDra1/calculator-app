@@ -39,8 +39,6 @@ function removeAllClasses() {
 
 buttons.forEach((element, index) => {
   element.addEventListener("click", () => {
-     i = JSON.parse(localStorage.getItem('index')) ? JSON.parse(localStorage.getItem('index')) : index
-     
     element.style.opacity = "1";
     if (index === 0) {
       container.style.backgroundColor = "hsl(222, 26%, 31%)";
@@ -51,7 +49,6 @@ buttons.forEach((element, index) => {
         "theme2__toggle__button",
         "theme3__toggle__button"
       );
-      localStorage.setItem('index', JSON.stringify(index))
 
       removeAllClasses();
     } else if (index === 1) {
@@ -73,7 +70,6 @@ buttons.forEach((element, index) => {
         "hsl(0, 5%, 81%)";
       body.style.color = "hsl(60, 10%, 19%)";
       element.classList.add("theme2__toggle__button");
-      localStorage.setItem('index', JSON.stringify(index))
     } else {
       container.style.backgroundColor = "hsl(268, 75%, 9%)";
       btnDefault.map((btn) => {
@@ -89,7 +85,6 @@ buttons.forEach((element, index) => {
       element.classList.add("theme3__toggle__button");
 
       panel.classList.add("theme3__panel");
-      localStorage.setItem('index', JSON.stringify(index))
     }
     buttons
       .filter(function (item) {
