@@ -99,6 +99,97 @@ buttons.forEach((element, index) => {
 let total = "";
 totalView.textContent = total;
 
+function condition(e) {
+  if (
+    total
+      .replaceAll(" ", "")
+      .replaceAll(",", "")
+      .replaceAll(".", "")
+      .split(
+        total.includes("+")
+          ? "+"
+          : total.includes("-")
+          ? "-"
+          : total.includes("x")
+          ? "x"
+          : total.includes("/")
+          ? "/"
+          : "+"
+      )
+      .at(-1).length %
+      3 ===
+      0 &&
+    !total
+      .replaceAll(" ", "")
+      .replaceAll(",", "")
+      .split(
+        total.includes("+")
+          ? "+"
+          : total.includes("-")
+          ? "-"
+          : total.includes("x")
+          ? "x"
+          : total.includes("/")
+          ? "/"
+          : "+"
+      )
+      .at(-1)
+      .includes(".") &&
+    !e.target.classList.contains("calculator__dot__key") &&
+    total.length !== 0 &&  total
+    .replaceAll(" ", "")
+    .replaceAll(",", "")
+    .replaceAll(".", "")
+    .split(
+      total.includes("+")
+        ? "+"
+        : total.includes("-")
+        ? "-"
+        : total.includes("x")
+        ? "x"
+        : total.includes("/")
+        ? "/"
+        : "+"
+    )
+    .at(-1).length !== 0
+  ) {
+    total += ",";
+  }
+}
+
+window.addEventListener("keydown", function (e) {
+  console.log(isFinite(+e.key));
+  if (e.key === "Enter") {
+    total = eval(total.replaceAll("x", "*").replaceAll(",", ""));
+    totalView.textContent = total;
+  } else if (isFinite(+e.key)) {
+    condition(e);
+    total = total + e.key;
+    totalView.textContent = total;
+  } else if(e.key === 'Backspace') {
+    total = total.replaceAll(" ", "").slice(0, -1);
+    totalView.textContent = total;
+  } else if(e.key === '+' || e.key === '/' || e.key === '-') {
+    if (
+      total.includes("-") ||
+      total.includes("+") ||
+      total.includes("/") ||
+      total.length === 0
+    )
+      return;
+    total = total + ` ${e.key} `;
+    totalView.textContent = total;
+  } else if(e.key === '*') {
+    if (
+      total.includes("x") ||
+      total.length === 0
+    )
+      return;
+    total = total + ` x `;
+    totalView.textContent = total;
+  }
+});
+
 document.addEventListener("click", function (e) {
   if (!e.target.classList.contains("calculator__key")) return;
 
@@ -127,49 +218,11 @@ document.addEventListener("click", function (e) {
     )
       return;
 
-    if (
-      total
-        .replaceAll(" ", "")
-        .replaceAll(",", "")
-        .replaceAll(".", "")
-        .split(
-          total.includes("+")
-            ? "+"
-            : total.includes("-")
-            ? "-"
-            : total.includes("x")
-            ? "x"
-            : total.includes("/")
-            ? "/"
-            : "+"
-        )
-        .at(-1).length %
-        3 ===
-        0 &&
-      !total
-        .replaceAll(" ", "")
-        .replaceAll(",", "")
-        .split(
-          total.includes("+")
-            ? "+"
-            : total.includes("-")
-            ? "-"
-            : total.includes("x")
-            ? "x"
-            : total.includes("/")
-            ? "/"
-            : "+"
-        )
-        .at(-1)
-        .includes(".") &&
-      !e.target.classList.contains("calculator__dot__key")
-    ) {
-      total += ",";
-    }
+    condition(e);
 
     console.log(total.includes("+"));
 
-    total = total + e.target.textContent;
+    total = total + e.target.textContent || e.key;
     total = total
       .split(" ")
       .map((v) =>
