@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+
+    <title>Calculator app - MikDra1</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="card">
+      <header class="header">
+        <h1>calc</h1>
+        <div class="header__right">
+          <h2>THEME</h2>
+          <div class="toggle__container">
+            <div class="options">
+          <p>1</p>
+          <p>2</p>
+          <p>3</p>
+        </div>
+          <div class="tri-state-toggle">
+            <input class="toggle__button" type="radio" name="toggle" id="one" />
+            <input class="toggle__button" type="radio" name="toggle" id="two" />
+            <input
+              class="toggle__button"
+              type="radio"
+              name="toggle"
+              id="three"
+            />
+          </div>
+        </div>
+        </div>
+      </header>
+
+      <main class="main">
+        <section class="panel">
+          <p class="total__view">399,981</p>
+        </section>
+        <section class="calculator">
+          <div class="calculator__grid">
+            <div class="calculator__key calculator__default__key">7</div>
+            <div class="calculator__key calculator__default__key">8</div>
+            <div class="calculator__key calculator__default__key">9</div>
+            <div class="calculator__key calculator__del__key">DEL</div>
+            <div class="calculator__key calculator__default__key">4</div>
+            <div class="calculator__key calculator__default__key">5</div>
+            <div class="calculator__key calculator__default__key">6</div>
+            <div class="calculator__key calculator__default__key calculator__key__action">+</div>
+            <div class="calculator__key calculator__default__key">1</div>
+            <div class="calculator__key calculator__default__key">2</div>
+            <div class="calculator__key calculator__default__key">3</div>
+            <div class="calculator__key calculator__default__key calculator__key__action">-</div>
+            <div class="calculator__key calculator__default__key calculator__dot__key">.</div>
+            <div class="calculator__key calculator__default__key">0</div>
+            <div class="calculator__key calculator__default__key calculator__key__action">/</div>
+            <div class="calculator__key calculator__default__key calculator__key__action">x</div>
+          </div>
+          <div class="calculator__bottom">
+            <div class="calculator__key calculator__reset__key">RESET</div>
+            <div class="calculator__key calculator__equal__key ">=</div>
+          </div>
+        </section>
+      </main>
+    </div>
+    </div>
+  </body>
+</html>
